@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Acronym View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AcronymViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Search Text" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M7X-fi-DbN">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9jF-4P-73T">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="acronymCell" id="OxJ-3s-FHV">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OxJ-3s-FHV" id="K81-Uc-Cpn">
+                                            <frame key="frameInset" width="414" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="OIn-3y-SCR"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Gy3-x6-csY"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGV-Oi-pvi">
+                                <color key="backgroundColor" red="0.19117218867142466" green="0.45273968936782699" blue="0.98768028846153844" alpha="0.74978448275862064" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="mX4-ru-IHf"/>
+                                </constraints>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="acronymSearch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uVn-1K-Rrh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="M7X-fi-DbN" firstAttribute="height" secondItem="VGV-Oi-pvi" secondAttribute="height" id="8S8-NP-vuK"/>
+                            <constraint firstItem="9jF-4P-73T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GKz-se-egQ"/>
+                            <constraint firstItem="M7X-fi-DbN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="58" id="K4j-Py-TZ6"/>
+                            <constraint firstItem="9jF-4P-73T" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="144" id="RUk-gA-5V5"/>
+                            <constraint firstItem="VGV-Oi-pvi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="58" id="RdJ-fb-VcM"/>
+                            <constraint firstAttribute="trailing" secondItem="9jF-4P-73T" secondAttribute="trailing" id="VmL-6n-YXv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VGV-Oi-pvi" secondAttribute="trailing" id="f6H-3j-yMZ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="M7X-fi-DbN" secondAttribute="leading" id="icj-n3-R0k"/>
+                            <constraint firstItem="VGV-Oi-pvi" firstAttribute="leading" secondItem="M7X-fi-DbN" secondAttribute="trailing" multiplier="0.9" constant="133" id="qtJ-9c-qdx"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9jF-4P-73T" secondAttribute="bottom" id="znT-34-Akv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="acronymMeaningsTableView" destination="9jF-4P-73T" id="Vej-av-TeI"/>
+                        <outlet property="acronymTextField" destination="M7X-fi-DbN" id="gAP-7I-MIx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-184.05797101449278" y="138.58695652173915"/>
+        </scene>
+    </scenes>
+</document>
