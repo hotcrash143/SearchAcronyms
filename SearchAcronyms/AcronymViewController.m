@@ -86,11 +86,11 @@
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            [self.viewModel getAcronymMeanings:self.acronymTextField.text withCompletionBlock:^(NSArray *meaningsArray, NSError *error) {
+            [self.viewModel getAcronymMeanings:self.acronymTextField.text withCompletionBlock:^(id meaningsArray, NSError *error) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    self.acronymMeaningsArray = meaningsArray;
+                    self.acronymMeaningsArray = (NSArray *)meaningsArray;
                     [self.acronymMeaningsTableView reloadData];
                     [MBProgressHUD hideHUDForView:self.view animated:YES];
                 });

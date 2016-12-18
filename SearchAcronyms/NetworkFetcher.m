@@ -18,10 +18,10 @@
     
     [JSONOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        NSArray *dictData = (NSArray *)responseObject;
+       // NSArray *dictData = (NSArray *)responseObject;
         
         if(completion) {
-            completion(dictData, nil);
+            completion(responseObject, nil);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

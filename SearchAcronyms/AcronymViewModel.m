@@ -35,12 +35,13 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"GET"];
     
-    [NetworkFetcher requestWith:request andCompletionBlock:^(NSArray *data, NSError *error) {
+    [NetworkFetcher requestWith:request andCompletionBlock:^(id data, NSError *error) {
         
         [self resetAcronymSet];
         
-        if([data count] > 0){
-            [self loadSetFromDictionary:data];
+        NSArray *arrayData = (NSArray *)data;
+        if([arrayData count] > 0){
+            [self loadSetFromArrayData:arrayData];
         }
         if(completion) {
             NSArray *finalList = [self.acronymMeaningsSet count] > 0 ? [self.acronymMeaningsSet array] : nil;
@@ -52,11 +53,13 @@
 }
 
 
--(void) loadSetFromDictionary:(NSArray *)data {
+-(void) loadSetFromArrayData:(NSArray *)data {
     
     NSAssert([self.acronymText caseInsensitiveCompare:[data[0] objectForKey:@"sf"]] == NSOrderedSame, @"Error during Parsing");
     
     for (NSDictionary *outerDict in [data[0] objectForKey:@"lfs"]) {
+        
+        [self.acronymMeaningsSet addObject:[outerDict objectForKey:@"lf"]];
         
         for (NSDictionary *innerVarsDict in [outerDict objectForKey:@"vars"]) {
             

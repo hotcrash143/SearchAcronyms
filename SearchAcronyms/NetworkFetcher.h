@@ -10,7 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
-typedef void (^dataCompletionBlock)(NSArray *data, NSError *error);
+typedef void (^dataCompletionBlock)(id data, NSError *error);
 
 @interface NetworkFetcher : NSObject
 
