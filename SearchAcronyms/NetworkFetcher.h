@@ -14,7 +14,9 @@ typedef void (^dataCompletionBlock)(id data, NSError *error);
 
 @interface NetworkFetcher : NSObject
 
+extern NSString *noInternetErrorDomain;
+extern NSString *noDataFoundErrorDomain;
+
 + (void) requestWith: (NSMutableURLRequest *)request andCompletionBlock:(dataCompletionBlock)completion;
-+ (void) showAlertWithTitle: (NSString *)title message: (NSString *)message action: (UIAlertAction *)action;
 
 @end

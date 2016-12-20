@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NetworkFetcher.h"
 
+@class AcronymViewModel;
 @interface AcronymViewModel : NSObject
 
 @property (nonatomic, strong) NSString *acronymText;

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "AcronymViewModel.h"
+#import "UICoordinator.h"
 
-@interface AcronymViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface AcronymViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *acronymTextField;
 @property (weak, nonatomic) IBOutlet UITableView *acronymMeaningsTableView;

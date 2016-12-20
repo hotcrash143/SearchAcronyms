@@ -42,10 +42,15 @@
         NSArray *arrayData = (NSArray *)data;
         if([arrayData count] > 0){
             [self loadSetFromArrayData:arrayData];
+            completion(self.acronymMeaningsSet, nil);
         }
-        if(completion) {
-            NSArray *finalList = [self.acronymMeaningsSet count] > 0 ? [self.acronymMeaningsSet array] : nil;
-            completion(finalList, nil);
+        else if ([arrayData count] == 0 && !error){
+            NSError *noDataError = nil;
+            noDataError = [NSError errorWithDomain:@"SearchAcronymErrors" code:1 userInfo:nil];
+            completion(nil, noDataError);
+        }
+        else{
+            completion(nil, error);
         }
     }];
     
@@ -54,8 +59,6 @@
 
 
 -(void) loadSetFromArrayData:(NSArray *)data {
-    
-    NSAssert([self.acronymText caseInsensitiveCompare:[data[0] objectForKey:@"sf"]] == NSOrderedSame, @"Error during Parsing");
     
     for (NSDictionary *outerDict in [data[0] objectForKey:@"lfs"]) {
         
@@ -73,5 +76,6 @@
     
     [self.acronymMeaningsSet removeAllObjects];
 }
+
 
 @end

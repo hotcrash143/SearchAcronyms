@@ -7,6 +7,7 @@
 //
 
 #import "NetworkFetcher.h"
+#import "AcronymViewModel.h"
 
 @implementation NetworkFetcher
 
@@ -18,15 +19,15 @@
     
     [JSONOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-       // NSArray *dictData = (NSArray *)responseObject;
-        
         if(completion) {
             completion(responseObject, nil);
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        [self showAlertWithTitle:@"**** Error ****" message:@"Please try again with a different text" action:nil];
+        if(completion) {
+            completion(nil, error);
+        }
         
     }];
     
@@ -39,46 +40,16 @@
             case AFNetworkReachabilityStatusNotReachable:
             default:
             {
-                UIAlertAction *action = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-                    if(completion){
-                        completion(nil, nil);
-                    }
-                }];
-                [self showAlertWithTitle:@"No Internet Connection" message:@"Your internet connection appers to offline. Please try again later" action:action];
+                NSError *noInternetError = [NSError errorWithDomain:@"SearchAcronymErrors" code:0 userInfo:nil];
+                if(completion) {
+                    completion(nil, noInternetError);
+                }
             }
-                
-                
                 break;
         }
     }];
     
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    
-    
-}
-
-+ (UIViewController *) getTopViewController {
-    
-    UINavigationController *rootNavigationController = (UINavigationController*)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
-    
-    if([rootNavigationController respondsToSelector:@selector(topViewController)]){
-        return [rootNavigationController topViewController];
-    }
-    return rootNavigationController;
-    
-}
-
-+ (void) showAlertWithTitle: (NSString *)title message: (NSString *)message action: (UIAlertAction *)action {
-    
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = action;
-    if(action == nil){
-        okAction = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
-    }
-    [alertController addAction:okAction];
-    
-    [[self getTopViewController] presentViewController:alertController animated:YES completion:nil];
-    
 }
 
 @end

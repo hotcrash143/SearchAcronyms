@@ -15,7 +15,9 @@
 
 @end
 
-@implementation AcronymViewController
+@implementation AcronymViewController {
+    UIImageView *imageView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,13 +25,21 @@
     
     self.acronymMeaningsArray = [[NSArray alloc] init];
     self.viewModel = [[AcronymViewModel alloc] init];
-    [self.acronymTextField becomeFirstResponder];
+    self.acronymTextField.delegate = self;
+    self.acronymMeaningsTableView.separatorColor = [UIColor blackColor];
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) viewWillAppear:(BOOL)animated {
+    imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BGImage"]];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.acronymMeaningsTableView setFrame:self.acronymMeaningsTableView.frame];
+    self.acronymMeaningsTableView.backgroundView = imageView;
 }
 
 
@@ -41,40 +51,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [self.acronymMeaningsTableView dequeueReusableCellWithIdentifier:@"acronymCell"];
+    if(!cell){
+        cell =[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"acronymCell"];
+    }
     cell.textLabel.text = self.acronymMeaningsArray[indexPath.row];
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
+}
 
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 40;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,tableView.frame.size.width,30)];
-    headerView.backgroundColor=[UIColor grayColor];
-    headerView.layer.borderColor=[UIColor blackColor].CGColor;
-    headerView.layer.borderWidth=1.0f;
-    
-    UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10,100,20)];
-    leftLabel.textAlignment = NSTextAlignmentRight;
-    leftLabel.text = self.acronymTextField.text;
-    leftLabel.textColor = [UIColor whiteColor];
-    leftLabel.backgroundColor = [UIColor clearColor];
-    
-    [headerView addSubview:leftLabel];
-    
-    UILabel *rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 5, headerView.frame.size.width-120.0, headerView.frame.size.height)];
-    rightLabel.textAlignment = NSTextAlignmentRight;
-    rightLabel.text = [NSString stringWithFormat:@"Count - %lu", (unsigned long)self.acronymMeaningsArray.count];
-    rightLabel.textColor=[UIColor whiteColor];
-    rightLabel.backgroundColor = [UIColor clearColor];
-    
-    [headerView addSubview:rightLabel];
-    
-    return headerView;
-    
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return [NSString stringWithFormat:@"Count - %lu", (unsigned long)self.acronymMeaningsArray.count];
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.acronymTextField becomeFirstResponder];
 }
 
 - (IBAction)acronymSearch:(id)sender {
@@ -84,22 +82,27 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.viewModel setAcronymText:self.acronymTextField.text];
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self.viewModel getAcronymMeanings:self.acronymTextField.text withCompletionBlock:^(id meaningsArray, NSError *error) {
             
-            [self.viewModel getAcronymMeanings:self.acronymTextField.text withCompletionBlock:^(id meaningsArray, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
+                if(meaningsArray) {
                     self.acronymMeaningsArray = (NSArray *)meaningsArray;
-                    [self.acronymMeaningsTableView reloadData];
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                });
-            }];
-        });
+                }
+                else if(error){
+                    [[UICoordinator sharedInstance] showAlertWithError:error action:nil];
+                }
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self.acronymMeaningsTableView reloadData];
+            });
+        }];
     }
     else {
-        [NetworkFetcher showAlertWithTitle:@"**** Warning ****" message:@"Please enter text to search" action:nil];
+        NSError *error = [NSError errorWithDomain:@"SearchAcronymErrors" code:3 userInfo:nil];
+        [[UICoordinator sharedInstance] showAlertWithError:error action:nil];
     }
+    
+    [self.acronymTextField resignFirstResponder];
 }
 
 @end

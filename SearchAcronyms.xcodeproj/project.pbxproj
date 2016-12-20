@@ -16,6 +16,8 @@
 		820865B81E05C05500C94E26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820865B61E05C05500C94E26 /* LaunchScreen.storyboard */; };
 		820865C11E05C16100C94E26 /* AcronymViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 820865C01E05C16100C94E26 /* AcronymViewModel.m */; };
 		820865C71E05C3C400C94E26 /* NetworkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 820865C61E05C3C400C94E26 /* NetworkFetcher.m */; };
+		82B147E21E08B97200962065 /* Error.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82B147E11E08B97200962065 /* Error.plist */; };
+		82B147E51E08BAF700962065 /* UICoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B147E41E08BAF700962065 /* UICoordinator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,9 @@
 		820865C01E05C16100C94E26 /* AcronymViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcronymViewModel.m; sourceTree = "<group>"; };
 		820865C51E05C3C400C94E26 /* NetworkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkFetcher.h; sourceTree = "<group>"; };
 		820865C61E05C3C400C94E26 /* NetworkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkFetcher.m; sourceTree = "<group>"; };
+		82B147E11E08B97200962065 /* Error.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Error.plist; sourceTree = "<group>"; };
+		82B147E31E08BAF700962065 /* UICoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICoordinator.h; sourceTree = "<group>"; };
+		82B147E41E08BAF700962065 /* UICoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICoordinator.m; sourceTree = "<group>"; };
 		B6B406D2434F9D4333A5C016 /* libPods-SearchAcronyms.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SearchAcronyms.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D711BB0E70FF0498EEEAA5A1 /* Pods-SearchAcronyms.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchAcronyms.release.xcconfig"; path = "Pods/Target Support Files/Pods-SearchAcronyms/Pods-SearchAcronyms.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +92,9 @@
 				820865C01E05C16100C94E26 /* AcronymViewModel.m */,
 				820865C51E05C3C400C94E26 /* NetworkFetcher.h */,
 				820865C61E05C3C400C94E26 /* NetworkFetcher.m */,
+				82B147E11E08B97200962065 /* Error.plist */,
+				82B147E31E08BAF700962065 /* UICoordinator.h */,
+				82B147E41E08BAF700962065 /* UICoordinator.m */,
 				820865B11E05C05500C94E26 /* Main.storyboard */,
 				820865B41E05C05500C94E26 /* Assets.xcassets */,
 				820865B61E05C05500C94E26 /* LaunchScreen.storyboard */,
@@ -178,6 +186,7 @@
 				820865B81E05C05500C94E26 /* LaunchScreen.storyboard in Resources */,
 				820865B51E05C05500C94E26 /* Assets.xcassets in Resources */,
 				820865B31E05C05500C94E26 /* Main.storyboard in Resources */,
+				82B147E21E08B97200962065 /* Error.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +247,7 @@
 			files = (
 				820865C71E05C3C400C94E26 /* NetworkFetcher.m in Sources */,
 				820865B01E05C05500C94E26 /* AcronymViewController.m in Sources */,
+				82B147E51E08BAF700962065 /* UICoordinator.m in Sources */,
 				820865AD1E05C05500C94E26 /* AppDelegate.m in Sources */,
 				820865C11E05C16100C94E26 /* AcronymViewModel.m in Sources */,
 				820865AA1E05C05500C94E26 /* main.m in Sources */,

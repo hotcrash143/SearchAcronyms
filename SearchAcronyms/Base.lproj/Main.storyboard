@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OxJ-3s-FHV" id="K81-Uc-Cpn">
-                                            <frame key="frameInset" width="414" height="43"/>
+                                            <frame key="frameInset" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -43,17 +42,21 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Gy3-x6-csY"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="21p-wd-QHl">
+                                <frame key="frameInset" minX="-0.5" minY="20" height="44" maxX="1"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Search Acronyms" id="bSU-Fa-7yW"/>
+                                </items>
+                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGV-Oi-pvi">
                                 <color key="backgroundColor" red="0.19117218867142466" green="0.45273968936782699" blue="0.98768028846153844" alpha="0.74978448275862064" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="93" id="mX4-ru-IHf"/>
-                                </constraints>
                                 <state key="normal" title="Search">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
-                                        <integer key="value" value="5"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -65,13 +68,14 @@
                         <constraints>
                             <constraint firstItem="M7X-fi-DbN" firstAttribute="height" secondItem="VGV-Oi-pvi" secondAttribute="height" id="8S8-NP-vuK"/>
                             <constraint firstItem="9jF-4P-73T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GKz-se-egQ"/>
-                            <constraint firstItem="M7X-fi-DbN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="58" id="K4j-Py-TZ6"/>
-                            <constraint firstItem="9jF-4P-73T" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="144" id="RUk-gA-5V5"/>
-                            <constraint firstItem="VGV-Oi-pvi" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="58" id="RdJ-fb-VcM"/>
+                            <constraint firstItem="M7X-fi-DbN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="83" id="K4j-Py-TZ6"/>
+                            <constraint firstItem="9jF-4P-73T" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="205" id="RUk-gA-5V5"/>
                             <constraint firstAttribute="trailing" secondItem="9jF-4P-73T" secondAttribute="trailing" id="VmL-6n-YXv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="VGV-Oi-pvi" secondAttribute="trailing" id="f6H-3j-yMZ"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="M7X-fi-DbN" secondAttribute="leading" id="icj-n3-R0k"/>
-                            <constraint firstItem="VGV-Oi-pvi" firstAttribute="leading" secondItem="M7X-fi-DbN" secondAttribute="trailing" multiplier="0.9" constant="133" id="qtJ-9c-qdx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="M7X-fi-DbN" secondAttribute="trailing" constant="18" id="cWT-dF-yzW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="M7X-fi-DbN" secondAttribute="leading" constant="-17" id="icj-n3-R0k"/>
+                            <constraint firstItem="VGV-Oi-pvi" firstAttribute="top" secondItem="M7X-fi-DbN" secondAttribute="bottom" constant="32" id="iuk-ss-d5o"/>
+                            <constraint firstItem="VGV-Oi-pvi" firstAttribute="leading" secondItem="M7X-fi-DbN" secondAttribute="leading" id="iyH-8g-PUJ"/>
+                            <constraint firstItem="VGV-Oi-pvi" firstAttribute="trailing" secondItem="M7X-fi-DbN" secondAttribute="trailing" id="qb0-Il-OYp"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9jF-4P-73T" secondAttribute="bottom" id="znT-34-Akv"/>
                         </constraints>
                     </view>

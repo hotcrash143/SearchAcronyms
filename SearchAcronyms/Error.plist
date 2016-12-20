@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SearchAcronymErrors</key>
+	<dict>
+		<key>3</key>
+		<dict>
+			<key>errorString</key>
+			<string>Empty text. Please enter text to search for</string>
+			<key>errorHeading</key>
+			<string>Warning</string>
+		</dict>
+		<key>2</key>
+		<dict>
+			<key>errorHeading</key>
+			<string>Request Failed</string>
+			<key>errorString</key>
+			<string>Something happened. Please contact Helpdesk!!</string>
+		</dict>
+		<key>1</key>
+		<dict>
+			<key>errorString</key>
+			<string>Please try again with a different text</string>
+			<key>errorHeading</key>
+			<string>No Data found</string>
+		</dict>
+		<key>0</key>
+		<dict>
+			<key>errorHeading</key>
+			<string>No Internet Connection</string>
+			<key>errorString</key>
+			<string>Your internet connection appers to offline. Please try again later</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
